@@ -1,0 +1,10 @@
+base1=imread('Image A.jpg');
+input1=imread('Image B.jpg');
+base= rgb2gray(base1);
+input=rgb2gray(input1);
+cpselect(input,base);
+tform=cp2tform(movingPoints,fixedPoints,'nonreflective similarity');
+structure=imfinfo('Image A.jpg');
+output=imtransform(input,tform,'Xdata',[1 structure.Width],'Ydata',[1 structure.Height]);
+figure,imshow(base);
+figure,imshow(output);
